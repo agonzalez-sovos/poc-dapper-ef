@@ -18,44 +18,51 @@ namespace POC.Infrastructure.Data
             _unitOfWork = unitOfWork;
         }
 
-        public TEntity AddOrUpdate(TEntity item)
+        public void Add(TEntity item)
         {
-            throw new NotImplementedException();
+            GetSet().Add(item);
         }
 
         public IQueryable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return GetSet();
         }
 
-        public TEntity GetById(int id)
+        public TEntity Get(int id)
         {
-            throw new NotImplementedException();
+            return GetSet().Find(id);
         }
 
         public IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return GetSet().Where(predicate);
         }
 
-        public TEntity Remove(TEntity item)
+        public void Remove(TEntity item)
         {
-            throw new NotImplementedException();
+            if (item == null)
+            {
+                _unitOfWork.Attach(item);
+                GetSet().Remove(item);
+            }
         }
 
         private IDbSet<TEntity> GetSet()
         {
-            return _unitOfWork.GetSet<TEntity>();
+            return _unitOfWork.CreateSet<TEntity>();
         }
 
-        public void Dispose()
+        public void Commit()
         {
-            throw new NotImplementedException();
+            _unitOfWork.Commit();
         }
 
-        public int Commit()
+        public void Update(TEntity item)
         {
-            return _unitOfWork.Commit();
+            if (item != null)
+            {
+                _unitOfWork.SetModified(item);
+            }
         }
     }
 }

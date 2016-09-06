@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace POC.Domain.Core
 {
-    public interface ISql : IDisposable
+    public interface ISql
     {
         T Single<T>(string sql, object param = null);
         T First<T>(string sql, object param = null);
         IEnumerable<T> Query<T>(string sql, object param = null);
-        int Excecute(string sql, object param = null);
-        T ExcecuteScalar<T>(string sql, object param = null);
+        int Execute(string sql, object param = null);
+        T ExecuteScalar<T>(string sql, object param = null);
     }
 }

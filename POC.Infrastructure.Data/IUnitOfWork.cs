@@ -10,7 +10,9 @@ namespace POC.Infrastructure.Data
 {
     public interface IUnitOfWork
     {
-        IDbSet<TEntity> GetSet<TEntity>() where TEntity : EntityBase, IAggregateRoot;
+        IDbSet<TEntity> CreateSet<TEntity>() where TEntity : EntityBase, IAggregateRoot;
+        void Attach<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot;
+        void SetModified<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot;
         int Commit();
     }
 }
