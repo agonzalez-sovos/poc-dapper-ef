@@ -10,7 +10,7 @@ namespace POC.Infrastructure.Data.Context
 {
     public class POCContext : DbContext, IUnitOfWork
     {
-        public POCContext() : base("") { }
+        public POCContext() : base("POC") { }
 
         public void Attach<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot
         {
