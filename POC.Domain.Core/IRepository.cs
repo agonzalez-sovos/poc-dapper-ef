@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace POC.Domain.Core
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : EntityBase, IAggregateRoot
+    public interface IRepository<TEntity> where TEntity : EntityBase, IAggregateRoot
     {
-        TEntity GetById(int id);
+        TEntity Get(int id);
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> GetFiltered(Expression<Func<TEntity, bool>> predicate);
-        TEntity AddOrUpdate(TEntity item);
-        TEntity Remove(TEntity item);
-        int Commit();
+        void Add(TEntity item);
+        void Update(TEntity item);
+        void Remove(TEntity item);
+        void Commit();
     }
 }

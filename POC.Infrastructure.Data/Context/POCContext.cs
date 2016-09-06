@@ -12,14 +12,24 @@ namespace POC.Infrastructure.Data.Context
     {
         public POCContext() : base("") { }
 
-        public int Commit()
+        public void Attach<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot
         {
-            return SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public IDbSet<TEntity> GetSet<TEntity>() where TEntity : EntityBase, IAggregateRoot
+        public int Commit()
         {
-            return Set<TEntity>();
+            throw new NotImplementedException();
+        }
+
+        public IDbSet<TEntity> CreateSet<TEntity>() where TEntity : EntityBase, IAggregateRoot
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetModified<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot
+        {
+            throw new NotImplementedException();
         }
     }
 }
