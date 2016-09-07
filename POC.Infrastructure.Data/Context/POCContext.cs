@@ -14,22 +14,22 @@ namespace POC.Infrastructure.Data.Context
 
         public void Attach<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot
         {
-            throw new NotImplementedException();
+            Set<TEntity>().Attach(item);
         }
 
-        public int Commit()
+        public void Commit()
         {
-            throw new NotImplementedException();
+            SaveChanges();
         }
 
         public IDbSet<TEntity> CreateSet<TEntity>() where TEntity : EntityBase, IAggregateRoot
         {
-            throw new NotImplementedException();
+            return Set<TEntity>();
         }
 
         public void SetModified<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot
         {
-            throw new NotImplementedException();
+            Entry(item).State = EntityState.Modified;
         }
     }
 }

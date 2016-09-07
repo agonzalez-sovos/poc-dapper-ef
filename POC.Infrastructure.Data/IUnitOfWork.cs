@@ -13,6 +13,6 @@ namespace POC.Infrastructure.Data
         IDbSet<TEntity> CreateSet<TEntity>() where TEntity : EntityBase, IAggregateRoot;
         void Attach<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot;
         void SetModified<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot;
-        int Commit();
+        void Commit();
     }
 }
