@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace POC.Infrastructure.Data
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : EntityBase, IAggregateRoot
+    public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : EntityBase, IAggregateRoot
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -63,6 +63,11 @@ namespace POC.Infrastructure.Data
             {
                 _unitOfWork.SetModified(item);
             }
+        }
+
+        public void Dispose()
+        {
+            _unitOfWork.Dispose();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace POC.Infrastructure.Data
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IDbSet<TEntity> CreateSet<TEntity>() where TEntity : EntityBase, IAggregateRoot;
         void Attach<TEntity>(TEntity item) where TEntity : EntityBase, IAggregateRoot;

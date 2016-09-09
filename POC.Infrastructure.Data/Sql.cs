@@ -1,11 +1,12 @@
 ﻿using Dapper;
 using POC.Domain.Core;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
 namespace POC.Infrastructure.Data
 {
-    public class Sql : ISql
+    public class Sql : ISql, IDisposable
     {
         private readonly IDbConnection _conn;
 
@@ -37,6 +38,11 @@ namespace POC.Infrastructure.Data
         public T Single<T>(string sql, object param = null)
         {
             return _conn.QuerySingleOrDefault<T>(sql, param);
+        }
+
+        public void Dispose()
+        {
+            _conn.Dispose();
         }
     }
 }

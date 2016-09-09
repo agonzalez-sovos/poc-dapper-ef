@@ -40,15 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aggregates\Client\Address.cs" />
+    <Compile Include="Aggregates\Client\Client.cs" />
+    <Compile Include="Aggregates\Order\LineOrder.cs" />
+    <Compile Include="Aggregates\Order\Order.cs" />
+    <Compile Include="Aggregates\Product\Product.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Aggregates\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\POC.Infrastructure.CrossCutting\POC.Infrastructure.CrossCutting.csproj">
       <Project>{1b6c4ddc-f107-43df-ad41-d7d1b3275b7c}</Project>
